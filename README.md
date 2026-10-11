@@ -7,7 +7,7 @@
 A Minecraft mod that adds log-textured fences and fence gates for every vanilla wood type.
 Strip the bark off each part separately with an axe to customize the look.
 
-> **Status:** Coming soon to CurseForge. Downloads are also available on [Releases](https://github.com/nokopi36/LogFencesAndGates/releases). See the [changelog](CHANGELOG.md) for supported versions.
+> **Download:** [CurseForge](https://www.curseforge.com/minecraft/mc-mods/log-fences-and-gates) or [GitHub Releases](https://github.com/nokopi36/LogFencesAndGates/releases). See the [changelog](CHANGELOG.md) for supported versions.
 
 ## Features
 

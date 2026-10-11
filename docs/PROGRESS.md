@@ -4,7 +4,7 @@
 
 ## 現在地
 - 実装中: なし
-- 次にやること: フェーズ 7（公開準備）。残り: CurseForge へのアップロード（ユーザー）。公開後に README の状態欄へ CurseForge のリンクを追加する
+- 次にやること: 公開済み（1.0.0）。今後は不具合対応・NeoForge 正式版への追従・SPEC「いつか」の機能
 
 ## 完了
 | 日付 | 機能 | コミット | メモ |
@@ -23,6 +23,9 @@
 - `mcsrc/` に NeoForge 本体のソース（gradle キャッシュの `neoforge-*-sources.jar`）も展開済み。NeoForge 更新時は両方展開し直す
 - GameTest 用ファイル（`data/log_fences/structure/test_area.nbt`・`test_instance/`）が配布 jar に入る。フェーズ 7 で除外するか検討
 - NeoForge 26.3 はベータ版。正式版が出たら `neo_version` を上げて追従する
+
+## 公開
+- 2026-10-11 時点で CurseForge に公開済み: https://www.curseforge.com/minecraft/mc-mods/log-fences-and-gates（1.0.0、Release）
 
 ## 公開準備（フェーズ 7）
 - **2026-10-04 に MOD 名を変更**: Log Fences → Log Fences and Gates（CurseForge に同名の別 MOD があったため）。mod_id `log_fences_and_gates`、パッケージ `com.nokopi.logfencesandgates`、メインクラス `LogFencesAndGates`、jar `logfencesandgates-neoforge-<MC>-<ver>.jar`、GitHub `nokopi36/LogFencesAndGates`。CurseForge のプロジェクト「Log Fences and Gates」作成済み。以下の記録の旧名はそのまま残している
