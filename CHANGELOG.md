@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.0 — Minecraft 26.3 / NeoForge 26.3.0.42-beta
+
+- Added Diagonal Fences support (optional). With Diagonal Fences installed, log fences connect diagonally too. Diagonal rails show bark or stripped wood correctly and can be stripped with an axe.
+- Fully stripped fences now drop the stripped variant even when they connect diagonally.
+
+**日本語**
+
+- Diagonal Fences に対応（任意）。Diagonal Fences を入れると、原木のフェンスも斜めに繋がります。斜めの横木も樹皮あり・なしが正しく表示され、斧で剥げます。
+- 斜めに繋がったフェンスも、全部位が剥がれていれば剥いだ版がドロップするようにしました。
+
 ## 1.0.0 — Minecraft 26.3 / NeoForge 26.3.0.42-beta
 
 First release.

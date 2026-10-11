@@ -13,7 +13,6 @@
               "type": "minecraft:item",
               "condition": {
                 "type": "minecraft:match_block",
-                "blocks": "log_fences_and_gates:acacia_log_fence",
                 "state": {
                   "lower_stripped": "true",
                   "post_stripped": "true",

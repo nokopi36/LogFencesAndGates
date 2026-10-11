@@ -24,7 +24,7 @@
 
 ## 他 MOD との互換性
 
-- [Diagonal Fences](https://modrinth.com/mod/diagonal-fences): 一緒に使えますが、原木のフェンスは斜めには繋がりません（バニラと同じ 4 方向の繋がりのままです）。
+- [Diagonal Fences](https://modrinth.com/mod/diagonal-fences)（任意）: 入れると、原木のフェンスも斜めに繋がり、斜めの横木も斧で剥げます。フェンスゲートは斜めになりません（バニラのゲートと同じ）。
 
 ## レシピ
 

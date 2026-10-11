@@ -12,6 +12,7 @@ import com.nokopi.logfencesandgates.block.StrippablePart;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.advancements.predicates.BlockPredicate;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -41,7 +42,8 @@ public class ModBlockLootSubProvider extends BlockLootSubProvider {
         }
     }
 
-    // 全部位が剥がれていれば剥いだ版、そうでなければ普通の版を落とす
+    // 全部位が剥がれていれば剥いだ版、そうでなければ普通の版を落とす。
+    // Diagonal Fences の斜め版ブロックもこのルートテーブルを使うので、ブロックの種類は条件に入れない
     private LootTable.Builder createLogFenceTable(Block block, Item strippedItem, StrippablePart[] parts) {
         StatePropertiesPredicate.Builder allStripped = StatePropertiesPredicate.Builder.properties();
         for (StrippablePart part : parts) {
@@ -50,7 +52,7 @@ public class ModBlockLootSubProvider extends BlockLootSubProvider {
         return LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool()
                 .setRolls(ContextIntProviders.exactly(1))
                 .add(LootItem.lootTableItem(strippedItem)
-                        .when(MatchBlock.blockMatches(this.blocks, block, allStripped))
+                        .when(MatchBlock.blockMatches(BlockPredicate.Builder.block().setProperties(allStripped)))
                         .otherwise(LootItem.lootTableItem(block)))));
     }
 }

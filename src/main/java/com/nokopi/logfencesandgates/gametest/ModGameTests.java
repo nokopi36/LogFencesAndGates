@@ -9,6 +9,7 @@ import com.nokopi.logfencesandgates.ModBlocks;
 import com.nokopi.logfencesandgates.ModItems;
 import com.nokopi.logfencesandgates.datagen.ModRecipeProvider;
 import com.nokopi.logfencesandgates.block.FencePart;
+import com.nokopi.logfencesandgates.compat.diagonalfences.DiagonalFencesCompatTests;
 import com.nokopi.logfencesandgates.block.GatePart;
 import com.nokopi.logfencesandgates.block.StrippablePart;
 
@@ -64,6 +65,9 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("stripped_place_and_drop", () -> ModGameTests::strippedPlaceAndDrop);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> RECIPE_COUNTS =
             TEST_FUNCTIONS.register("recipe_counts", () -> ModGameTests::recipeCounts);
+    // Diagonal Fences が無いときはすぐ成功にする（テストの定義は jar に含まれるので、関数は常に登録しておく）
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> DIAGONAL_FENCES_COMPAT =
+            TEST_FUNCTIONS.register("diagonal_fences_compat", () -> ModGameTests::diagonalFencesCompat);
 
     // data/log_fences_and_gates/structure/test_area.nbt（空の 3x3x3）
     private static final Identifier TEST_AREA = Identifier.fromNamespaceAndPath(LogFencesAndGates.MODID, "test_area");
@@ -297,5 +301,14 @@ public final class ModGameTests {
         ItemStack result = ((Recipe<CraftingInput>) recipe).assemble(CraftingInput.EMPTY);
         helper.assertTrue(result.is(item) && result.getCount() == expected,
                 id + " recipe should make " + expected + " but makes " + result);
+    }
+
+    // SPEC 3.8: Diagonal Fences 連携
+    private static void diagonalFencesCompat(GameTestHelper helper) {
+        if (!LogFencesAndGates.isDiagonalBlocksLoaded()) {
+            helper.succeed();
+            return;
+        }
+        DiagonalFencesCompatTests.diagonalLogFences(helper);
     }
 }

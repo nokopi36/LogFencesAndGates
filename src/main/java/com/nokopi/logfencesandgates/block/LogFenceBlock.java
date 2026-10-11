@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.Nullable;
 
 public class LogFenceBlock extends FenceBlock {
     private final boolean flammable;
@@ -44,17 +45,35 @@ public class LogFenceBlock extends FenceBlock {
     @Override
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
             InteractionHand hand, BlockHitResult hitResult) {
+        InteractionResult result = stripWithAxe(stack, state, level, pos, player, hand, hitResult, hasRails(state));
+        return result != null ? result : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+    }
+
+    /**
+     * 斧でクリックした部位の樹皮を剥ぐ。斧でなければ null（呼び出し元で通常の処理に回す）。
+     * Diagonal Fences 連携の斜め版フェンスからも使う。
+     */
+    public static @Nullable InteractionResult stripWithAxe(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
+            InteractionHand hand, BlockHitResult hitResult, boolean hasRails) {
         if (!BarkStripping.isAxe(stack)) {
-            return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+            return null;
         }
         Vec3 local = hitResult.getLocation().subtract(pos.getX(), pos.getY(), pos.getZ());
-        FencePart part = FencePart.fromHit(local.x, local.y, local.z, hasRails(state));
+        FencePart part = FencePart.fromHit(local.x, local.y, local.z, hasRails);
         if (BarkStripping.isStripped(state, part)) {
             // 剥がれ済みなら何もせず、通常の右クリック（リードを結ぶなど）に回す
             return InteractionResult.TRY_WITH_EMPTY_HAND;
         }
         BarkStripping.strip(state, part, level, pos, player, stack, hand);
         return InteractionResult.SUCCESS;
+    }
+
+    public boolean isFlammable() {
+        return this.flammable;
+    }
+
+    public Supplier<? extends Item> strippedItem() {
+        return this.strippedItem;
     }
 
     private static boolean hasRails(BlockState state) {

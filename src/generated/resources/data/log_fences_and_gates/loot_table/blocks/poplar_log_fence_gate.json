@@ -13,7 +13,6 @@
               "type": "minecraft:item",
               "condition": {
                 "type": "minecraft:match_block",
-                "blocks": "log_fences_and_gates:poplar_log_fence_gate",
                 "state": {
                   "inner_stripped": "true",
                   "lower_stripped": "true",

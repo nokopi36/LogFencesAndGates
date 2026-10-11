@@ -41,7 +41,7 @@ The counts follow the vanilla plank recipes: 1 log = 4 planks, and 1 Block of Ba
 ## Good to know
 - Uses the vanilla log textures, so resource packs that change logs change these fences too.
 - All items are in the **Log Fences and Gates** creative tab, and also in the Building Blocks tab next to each vanilla fence gate.
-- **Diagonal Fences**: works together, but log fences keep the vanilla four-direction connections and do not connect diagonally.
+- **Diagonal Fences** (optional): with it installed, log fences connect diagonally too, and diagonal rails can be stripped. Fence gates do not go diagonal.
 - Required on both the client and the server.
 
 ## Links
@@ -93,7 +93,7 @@ The counts follow the vanilla plank recipes: 1 log = 4 planks, and 1 Block of Ba
 ## その他
 - バニラの原木のテクスチャを使うので、原木を変えるリソースパックを入れると、このフェンスの見た目も変わります。
 - すべてのアイテムは「Log Fences and Gates」タブにあります。「建築ブロック」タブでも、各木のバニラのフェンスゲートの後ろに並んでいます。
-- **Diagonal Fences**: 一緒に使えますが、原木のフェンスは斜めには繋がりません（バニラと同じ 4 方向の繋がりのままです）。
+- **Diagonal Fences**（任意）: 入れると、原木のフェンスも斜めに繋がり、斜めの横木も斧で剥げます。フェンスゲートは斜めになりません。
 - クライアントとサーバーの両方に必要です。
 
 ## リンク

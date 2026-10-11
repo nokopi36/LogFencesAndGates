@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "log_fences_and_gates:diagonal_fences_compat",
+  "max_ticks": 20,
+  "structure": "log_fences_and_gates:test_area"
+}

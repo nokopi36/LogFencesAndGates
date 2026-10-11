@@ -91,3 +91,11 @@ Craft them from stripped logs to get fully stripped variants.
 # stop your mod loading on the server for example.
 #[features.${mod_id}]
 #openGLVersion="[3.2,)"
+
+# Diagonal Fences integration (optional). When it is installed, log fences connect diagonally too.
+[[dependencies.${mod_id}]]
+    modId="diagonalfences"
+    type="optional"
+    versionRange="[26.3,)"
+    ordering="NONE"
+    side="BOTH"

@@ -24,7 +24,7 @@ Strip the bark off each part separately with an axe to customize the look.
 
 ## Compatibility
 
-- [Diagonal Fences](https://modrinth.com/mod/diagonal-fences): works together, but log fences do not connect diagonally (they keep the vanilla four-direction connections).
+- [Diagonal Fences](https://modrinth.com/mod/diagonal-fences) (optional): with it installed, log fences connect diagonally too, and diagonal rails can be stripped. Fence gates do not go diagonal (same as vanilla gates with Diagonal Fences).
 
 ## Recipes
 

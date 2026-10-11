@@ -4,7 +4,7 @@
 
 ## 現在地
 - 実装中: なし
-- 次にやること: 公開済み（1.0.0）。今後は不具合対応・NeoForge 正式版への追従・SPEC「いつか」の機能
+- 次にやること: 1.1.0（Diagonal Fences 連携）のゲーム内確認 → GitHub Releases・CurseForge に公開
 
 ## 完了
 | 日付 | 機能 | コミット | メモ |
@@ -43,6 +43,7 @@
 - 配布 jar のサーバー確認（2026-10-04、NeoForge 26.3.0.42-beta 専用サーバー・本番モード・jar 単体）: 起動 OK、setblock で剥ぎ状態付きのブロックを設置 OK、ルートテーブル（全部剥がれ → 剥いだ版／一部 → 普通の版）OK。`/test run log_fences:*` はプレイヤーのいない専用サーバーでは開始直後から進まず未完（テスト環境側の制約と判断。同じテストは開発環境の GameTestServer で全件成功）
 
 ## 他 MOD との互換性
+- **1.1.0 で Diagonal Fences に対応**（2026-10-11、SPEC 3.8）: `DiagonalBlockTypes.FENCE.registerBlockFactory` で剥ぎの状態を持つ `DiagonalLogFenceBlock` を登録。API は Fuzs の Maven から compileOnly（`diagonalblocks-neoforge` 26.3.0）、開発時は Diagonal Fences 26.3.0 + Puzzles Lib 26.3.9 を localRuntime（26.3.13 は NeoForge 26.3.0.44+ が必要）。ドロップの条件からブロックの種類を外した。Diagonal Fences が全 BlockItem を向け直す副作用で元のフェンスの asItem() が剥いだ版になるため、アクセストランスフォーマーで `Block#item` を公開し、TagsUpdatedEvent（LOWEST）で普通の版に戻す。GameTest 9 件が Diagonal Fences あり・なしの両方で成功
 - Diagonal Fences 26.3.0（+ Puzzles Lib 26.3.9）: 一緒に入れても動くが、Log Fences のフェンスは斜めにならない（状態の項目数が違うため対象外）。GameTest も成功。連携は SPEC 3.6「いつか」に記録
 
 ## 遊んでみた感想・調整したいこと

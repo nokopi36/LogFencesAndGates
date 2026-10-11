@@ -28,6 +28,31 @@ sourceSets.main.resources {
 
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
+
+    // Diagonal Blocks / Puzzles Lib（Fuzs の Maven）。Diagonal Fences 連携のコンパイル用。fuzs とその下のグループだけをここから取得する
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Fuzs Mod Resources'
+                url = 'https://raw.githubusercontent.com/Fuzss/modresources/main/maven/'
+            }
+        }
+        filter {
+            includeGroupAndSubgroups 'fuzs'
+        }
+    }
+    // 互換性確認用の他 MOD（Modrinth Maven）。maven.modrinth グループだけをここから取得する
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Modrinth'
+                url = 'https://api.modrinth.com/maven'
+            }
+        }
+        filter {
+            includeGroup 'maven.modrinth'
+        }
+    }
 }
 
 base {
@@ -112,6 +137,12 @@ configurations {
 }
 
 dependencies {
+    // Diagonal Fences 連携（任意の依存）: API はコンパイル時だけ使う。配布 jar には含めず、実行時は Diagonal Fences 本体が提供する
+    compileOnly "fuzs.diagonalblocks:diagonalblocks-neoforge:${diagonal_blocks_version}"
+    // 動作確認用: 開発環境の実行時だけ Diagonal Fences と前提の Puzzles Lib を読み込む（Modrinth のバージョン ID で固定）
+    localRuntime "maven.modrinth:diagonal-fences:${diagonal_fences_version}"
+    localRuntime "maven.modrinth:puzzles-lib:${puzzles_lib_version}"
+
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
