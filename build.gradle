@@ -29,7 +29,7 @@ sourceSets.main.resources {
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
 
-    // Diagonal Blocks / Puzzles Lib（Fuzs の Maven）。Diagonal Fences 連携のコンパイル用。fuzs とその下のグループだけをここから取得する
+    // Diagonal Blocks / Puzzles Lib（Fuzs の Maven）。Diagonal Fences 連携のコンパイル用。fuzs グループだけをここから取得する
     exclusiveContent {
         forRepository {
             maven {
